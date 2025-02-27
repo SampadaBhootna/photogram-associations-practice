@@ -12,12 +12,8 @@
 
 class Comment < ApplicationRecord
   validates(:commenter, { :presence => true })
-
-  # Association accessor methods to define:
   
-  ## Direct associations
-
-  # Comment#commenter: returns a row from the users table associated to this comment by the author_id column
-
-  # Comment#photo: returns a row from the photos table associated to this comment by the photo_id column
+    ## Direct Associations
+    belongs_to :commenter, class_name: "User", foreign_key: "author_id"
+    belongs_to :photo
 end
